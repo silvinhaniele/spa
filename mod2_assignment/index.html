@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      .emptyMessage {
+        font-weight: bold;
+        color: red;
+        font-size: 1.2em;
+      }
+      li {
+        margin-bottom: 7px;
+        font-size: 1.2em;
+      }
+      li > button {
+        margin-left: 6px;
+      }
+      button > span {
+        color: green;
+      }
+      li > span {
+        color: green;
+      }
+    </style>
+  </head>
+<body ng-app="ShoppingListCheckOff">
+  <div class="container">
+    <h1>Shopping List Check Off</h1>
+
+      <div class="row">
+
+      <!-- To Buy List -->
+      <div class="col-md-6" ng-controller='ToBuyController as toBuyController'>
+       <h2>To Buy:</h2>
+       <ul>
+         <li ng-repeat="item in toBuyController.itemsToBuy">
+            Buy {{ item.quantity }} {{ item.name }}
+            <button class="btn btn-default" ng-click="toBuyController.buyItem($index);"><span class="glyphicon glyphicon-ok"></span> Bought</button></button>
+        </li>
+       </ul>
+       <div ng-if="toBuyController.itemsToBuy.length === 0" class="emptyMessage">Everything is bought! <span class="glyphicon glyphicon-shopping-cart"></div>
+      </div>
+
+      <!-- Already Bought List -->
+      <div class="col-md-6" ng-controller='AlreadyBoughtController as alreadyBoughtController'>
+       <h2>Already Bought:</h2>
+       <ul>
+         <li ng-repeat="item in alreadyBoughtController.itemsAlreadyBought">
+            Bought {{ item.quantity }} {{ item.name }} <span class="glyphicon glyphicon-ok">
+        </li>
+       </ul>
+       <div ng-if="alreadyBoughtController.itemsAlreadyBought.length === 0" class="emptyMessage">Nothing bought yet. <span class="glyphicon glyphicon-apple"></div>
+      </div>
+    </div>
+  </div>
+  <script src="angular.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
