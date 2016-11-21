@@ -1,7 +1,7 @@
 <ul>
-  <li ng-repeat="item in $ctrl.categoryItemsList">
+  <li ng-repeat="item in $ctrl.items">
     <div>
-      Menu item: {{item.name}}
+      <b>{{ item.name }}:</b> {{ item.description }} :: <b>Price large:</b> {{ item.price_large }} 
     </div>
   </li>
 </ul>

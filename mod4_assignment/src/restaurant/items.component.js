@@ -5,7 +5,7 @@
   .component('showItems', {
     templateUrl: 'src/restaurant/templates/category-items-list.template.html',
     bindings: {
-      categoryItems: '<'
+      items: '<'
     }
   });
 

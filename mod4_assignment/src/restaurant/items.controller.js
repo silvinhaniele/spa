@@ -7,13 +7,14 @@
   CategoryItemsController.$inject = ['items'];
   function CategoryItemsController(items) {
     var $ctrl = this;
-    $ctrl.categoryItemsList = [];
+    $ctrl.items = [];
 
-    for (var item in items) {
-      $ctrl.categoryItemsList.push(items[item]);
+    for (var i = 0; i < items.menu_items.length; i++) {
+      console.log(items.menu_items[i]);
+      $ctrl.items.push(items.menu_items[i]);
     }
 
-    console.log('got to CategoryItemsController >>> ok! ' + $ctrl.categoryItemsList);
+    console.log('got to CategoryItemsController >>> ok! ' + $ctrl.items.length);
   }
 
 })();
