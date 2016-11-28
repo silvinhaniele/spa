@@ -1,0 +1,36 @@
+<div class="container">
+  <h3 class="text-center">Registered information</h3>
+  <div class="text-center" ng-if="myInfoCtrl.user === undefined">
+    Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a> <span class="glyphicon glyphicon-pencil"></span>
+  </div>
+  <div ng-show="myInfoCtrl.user !== undefined">
+    <div class="text-left">
+      First Name: {{ myInfoCtrl.user.firstname }}
+      <br>
+      Last Name: {{ myInfoCtrl.user.lastname }}
+      <br>
+      Email Address: {{ myInfoCtrl.user.email }}
+      <br>
+      Phone Number: {{ myInfoCtrl.user.phone }}
+      <br>
+      Favorite Dish:
+      <br>
+      <div class="menu-item-tile col-md-6">
+        <div class="row">
+          <div class="col-sm-5" ng-if="myInfoCtrl.user.dishFromServer.image_present === true">
+            <div class="menu-item-photo">
+              <div>{{ myInfoCtrl.user.dishFromServer.short_name }}</div>
+              <img class="img-responsive" width="250" height="150" ng-src="{{myInfoCtrl.basePath}}/images/{{ myInfoCtrl.user.dishFromServer.short_name }}.jpg">
+            </div>
+          </div>
+          <div class="menu-item-description col-sm-7">
+            <h3 class="menu-item-title">{{ myInfoCtrl.user.dishFromServer.name }}</h3>
+            <p class="menu-item-details">{{ myInfoCtrl.user.dishFromServer.description }}</p>
+          </div>
+        </div>
+        <hr class="visible-xs">
+      </div>
+    </div>
+  </div>
+
+</div>

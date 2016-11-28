@@ -1,0 +1,100 @@
+<div class="container">
+  <h3>Sign up today for our newsletter!</h3>
+
+  <form name='signUpForm' novalidate>
+    <div ng-if="signUpCtrl.validated !== ''">
+      {{ signUpCtrl.validated }} <span class="glyphicon glyphicon-ok"></span>
+    </div>
+
+    <div ng-if="signUpCtrl.dishNotFound !== ''">
+      {{ signUpCtrl.dishNotFound }} <span class="glyphicon glyphicon-remove"></span>
+    </div>
+
+    <br>
+    <!-- First Name field -->
+    <div class="form-group row">
+      <label for="inputFirstName" class="col-sm-2 col-form-label">First Name: </label>
+      <div class="col-sm-10">
+        <input type="text" name="firstname" placeholder="Enter your first name."
+              ng-model="signUpCtrl.user.firstname"
+              required
+              class="form-control"
+              id="inputFirstName">
+      </div>
+      <span ng-if="signUpForm.firstname.$error.required && signUpForm.firstname.$touched">
+        First name is required.
+      </span>
+    </div>
+
+    <!-- Last Name field -->
+    <div class="form-group row">
+      <label for="inputLastName" class="col-sm-2 col-form-label">Last Name: </label>
+      <div class="col-sm-10">
+        <input type="text" name="lastname" placeholder="Enter your last name."
+              ng-model="signUpCtrl.user.lastname"
+              required
+              class="form-control"
+              id="inputLastName">
+      </div>
+      <span ng-if="signUpForm.lastname.$error.required && signUpForm.lastname.$touched">
+        Last name is required.
+      </span>
+    </div>
+
+    <!-- Email Address field -->
+    <div class="form-group row">
+      <label for="inputEmail" class="col-sm-2 col-form-label">Email: </label>
+      <div class="col-sm-10">
+        <input type="email" name="email" placeholder="Enter you email."
+              ng-model="signUpCtrl.user.email"
+              required
+              class="form-control"
+              id="inputEmail">
+      </div>
+      <span ng-if="(signUpForm.email.$invalid || signUpForm.email.$error.required) && signUpForm.email.$touched">
+        Email must be a valid email address: handle@domain format
+      </span>
+    </div>
+
+    <!-- Phone Number field -->
+    <div class="form-group row">
+      <label for="inputPhone" class="col-sm-2 col-form-label">Phone: </label>
+      <div class="col-sm-10">
+        <input type="text" name="phone" placeholder="Phone ###-###-####"
+              ng-model="signUpCtrl.user.phone"
+              pattern="(\d{3})-(\d{3})-(\d{4})"
+              required
+              class="form-control"
+              id="inputPhone">
+      </div>
+      <span ng-if="signUpForm.phone.$invalid && signUpForm.phone.$touched">
+        Phone must be in the format ###-###-####.
+      </span>
+    </div>
+
+    <!-- Favorite Dish field -->
+    <div class="form-group row">
+      <label for="inputFavDish" class="col-sm-2 col-form-label">Favorite Dish: </label>
+      <div class="col-sm-10">
+        <input type="text" name="favedish" placeholder="Enter your favorite dish's short name."
+              ng-model="signUpCtrl.user.favedish"
+              required
+              class="form-control"
+              id="inputFavDish">
+      </div>
+      <span ng-if="signUpForm.favedish.$error.required && signUpForm.favedish.$touched">
+        Favorite dish is required.
+      </span>
+    </div>
+
+    <div class="form-group row">
+      <div class="offset-sm-2 col-sm-10">
+        <button type="submit" class="btn btn-primary"
+                ng-disabled="signUpForm.$invalid"
+                ng-click="signUpCtrl.submit()">
+            Sign up <span class="glyphicon glyphicon-floppy-save"></span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
