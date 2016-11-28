@@ -6,10 +6,6 @@
       {{ signUpCtrl.validated }} <span class="glyphicon glyphicon-ok"></span>
     </div>
 
-    <div ng-if="signUpCtrl.dishNotFound !== ''">
-      {{ signUpCtrl.dishNotFound }} <span class="glyphicon glyphicon-remove"></span>
-    </div>
-
     <br>
     <!-- First Name field -->
     <div class="form-group row">
@@ -84,6 +80,9 @@
       </div>
       <span ng-if="signUpForm.favedish.$error.required && signUpForm.favedish.$touched">
         Favorite dish is required.
+      </span>
+      <span ng-if="signUpCtrl.dishNotFound !== ''">
+        {{ signUpCtrl.dishNotFound }} <span class="glyphicon glyphicon-remove"></span>
       </span>
     </div>
 
